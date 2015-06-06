@@ -72,6 +72,7 @@ class PlaySoundsViewController: UIViewController {
         attachEffectAndPlay(echoEffect)
     }
     
+    // custom function that attaches AVAudioUnitEffect instance to audioEngine
     func attachEffectAndPlay(effect:AVAudioUnitEffect) {
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
