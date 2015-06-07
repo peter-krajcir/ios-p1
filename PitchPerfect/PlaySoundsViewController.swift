@@ -1,3 +1,4 @@
+// Audio Effects screen
 //
 //  PlaySoundsViewController.swift
 //  PitchPerfect
@@ -72,7 +73,7 @@ class PlaySoundsViewController: UIViewController {
         attachEffectAndPlay(echoEffect)
     }
     
-    // custom function that attaches AVAudioUnitEffect instance to audioEngine
+    /// custom function that attaches AVAudioUnitEffect instance to audioEngine effect must be type of AVAudioUnitEffect, doesn't work with time effects
     func attachEffectAndPlay(effect:AVAudioUnitEffect) {
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -88,12 +89,14 @@ class PlaySoundsViewController: UIViewController {
         audioPlayerNode.play()
     }
     
+    /// used to stop all playing music using either AVAudioPlayer or AVAudioEngine system and reset the position when using AVAudioEngine class for playing
     func killSound() {
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
     }
     
+    /// stop the sound and then plays the sound at specified rate
     func playSoundAtRate(rate : Float) {
         killSound()
         
@@ -102,6 +105,8 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.play()
     }
     
+    
+    /// custom function for time related effects using class AVAudioUnitTimePitch
     func playAudioWithVariablePitch(pitch: Float){
         killSound()
         
